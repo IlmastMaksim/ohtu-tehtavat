@@ -31,10 +31,14 @@ class Ostoskori:
 
     def poista_tuote(self, poistettava: Tuote):
         # poistaa tuotteen
-        pass
+        if poistettava.nimi() in self.kori.keys():
+            if self.kori[poistettava.nimi()].lukumaara() > 1:
+                self.kori[poistettava.nimi()].muuta_lukumaaraa(-1)
+            else:
+                del self.kori[poistettava.nimi()]
 
     def tyhjenna(self):
-        pass
+        self.kori = {}
         # tyhjentää ostoskorin
 
     def ostokset(self):
